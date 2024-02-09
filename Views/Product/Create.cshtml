@@ -1,0 +1,63 @@
+﻿@model DemoMVC.Models.Product
+@{
+    ViewData["Title"] = "Add a New Product";
+}
+<h1>Add a new Product</h1>
+<hr />
+<h4>
+    @ViewData["Message"]<br />
+</h4>
+<div class="flex-container">
+    <div class="col-md-4 col-sm-6">
+        <form asp-controller="Product" asp-action="Create" method="POST">
+            <div class="form-group">
+                <label> Product ID : </label>
+                <input asp-for="ProductId" placeholder="ProductId" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label> SKU : </label>
+                <input asp-for="SKU" placeholder="SKU" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label>Product Name : </label>
+                <input asp-for="ProductName" placeholder="ProductName" />
+            </div>
+            <br />
+             <div class="form-group">
+                <label> Features :  </label>
+                <input asp-for="Features" placeholder="Features" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label> Price :  </label>
+                <input asp-for="Price" placeholder="Price" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label> Stock :  </label>
+                <input asp-for="Stock" type="text" placeholder="Stock" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label> Warranty :  </label>
+                <input asp-for="Warranty" type="text" placeholder="Warranty" />
+            </div>
+            <br />
+             <div class="form-group">
+                <label> Rating : </label>
+                <input asp-for="Rating" type="text"  placeholder="Rating" />
+            </div>
+            <br />
+            <div class="form-group"><br/>
+                <label> Vendor Id : </label>
+                <input asp-for="VendorId" type="text" placeholder="VendorId" />
+            </div>
+            <br />
+    <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-info" />
+    </div>
+</form>
+</div>
+</div>

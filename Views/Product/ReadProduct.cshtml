@@ -1,0 +1,51 @@
+﻿@model DemoMVC.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "View Product";
+}@*
+@using (Html.BeginForm("ReadProduct", "Product", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Enter SKU : </td>
+            <td>@Html.TextBoxFor(m => m.SKU)</td>
+        </tr>
+        <tr>
+            <td> <input type="submit" value="Submit"></td>
+
+        </tr>
+    </table>
+}
+ *@
+<h4>
+    @ViewData["Message"]<br />
+</h4>
+<div class="flex-container">
+    <div class="col-md-4 col-sm-6">
+        <form asp-controller="Product" asp-action="ReadProduct">
+            <div class="form-group">
+                <label asp-for="SKU"> SKU : </label>
+                <input asp-for="SKU" placeholder="SKU" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+    <h6>
+        @ViewBag.ProductId <br/>
+        @ViewBag.SKU <br />
+        @ViewBag.ProductName <br />
+        @ViewBag.Features <br />
+    </h6>
+ </div>
+
+<br />
+<br />
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

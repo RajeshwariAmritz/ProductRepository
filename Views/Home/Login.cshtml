@@ -1,0 +1,34 @@
+﻿@model DemoMVC.Models.loginuser
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+@{
+    ViewData["Title"] = "Login Page";
+
+}
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<div class="flex-container " >
+    <div class="col-md-4 col-sm-6">
+        <form asp-controller="Home" asp-action="Login">
+        <div class="form-group">
+            <label> Username : </label><br/>
+            <input asp-for="username" placeholder="Username" />
+        </div>
+        <br/>
+            <div class="form-group">
+                <label>Password : </label> <br />
+            <input type="password" asp-for="passwd" placeholder="Password" />
+        </div>
+        <br/>
+        <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-info" />
+        </div>
+        </form>
+    </div>
+</div>
+@{
+    @ViewData["welcome1"]
+}
