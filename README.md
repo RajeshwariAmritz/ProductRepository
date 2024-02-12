@@ -31,7 +31,7 @@ Operations Performed:
 
 1.Login page
 <br/>
-<img src="Pictures/login.png" style=" width:500px ; height:500px ">
+<img src="Pictures\login.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
 2.Display Products table
