@@ -35,22 +35,27 @@ Operations Performed:
 <br/>
 <br/>
 2.Display Products table
+<br/>
 <img src="Pictures\view.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
 3.Insert a new record into the table
+<br/>
 <img src="Pictures\insert.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
 4.Read a single value from the table
+<br/>
 <img src="Pictures\read.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
 5.Update data
+<br/>
 <img src="Pictures\update.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
 6.Delete Product detail
+<br/>
 <img src="Pictures\delete.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
