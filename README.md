@@ -29,20 +29,20 @@ Operations Performed:
 * [Cache] to hold the response messages for a specific duration of time
 * [HttpGet] and [HttpPost] are used to send user data from the forms to the server.
 
-1. Login page
+###1.Login page
 <img src="Pictures/login.png" style=" width:450px ; height:450px ">
 
-2. Display Products table
+###2.Display Products table
 <img src="Pictures\view.png" style=" width:500px ; height:500px ">
 
-3. Insert a new record into the table
+###3.Insert a new record into the table
 <img src="Pictures\insert.png" style=" width:500px ; height:500px ">
 
-4. Read a single value from the table
+###4.Read a single value from the table
 <img src="Pictures\read.png" style=" width:500px ; height:500px ">
 
-5. Update data
+###5.Update data
 <img src="Pictures\update.png" style=" width:500px ; height:500px ">
 
-6. Delete Product detail
+###6.Delete Product detail
 <img src="Pictures\delete.png" style=" width:500px ; height:500px ">
