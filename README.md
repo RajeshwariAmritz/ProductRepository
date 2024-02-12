@@ -29,4 +29,4 @@ Operations Performed:
 * [Cache] to hold the response messages for a specific duration of time
 * [HttpGet] and [HttpPost] are used to send user data from the forms to the server.
 
-  
+  < img src = "Pictures\login.png" style="width = 450 px ; height =450 px" >
