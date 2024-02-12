@@ -8,4 +8,4 @@ Operations Performed:
 *Update
 *Filter
 
-####The Application is developed using ASP.Net MVC, SQL and Dapper for database connection. In MVC (Model View Controller) request is sent to the Controller which returns a View as an ActionResult response.####
+#### The Application is developed using ASP.Net MVC, SQL and Dapper for database connection. In MVC (Model View Controller) request is sent to the Controller which returns a View as an ActionResult response. ####
