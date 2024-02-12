@@ -30,7 +30,7 @@ Operations Performed:
 * [HttpGet] and [HttpPost] are used to send user data from the forms to the server.
 
 1.Login page
-<br/>
+<br\>
 <img src="Pictures\login.png" style=" width:500px ; height:500px ">
 <br/>
 <br/>
