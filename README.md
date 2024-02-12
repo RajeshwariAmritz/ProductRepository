@@ -11,10 +11,10 @@ Operations Performed:
 
 #### The Application is developed using ASP.Net MVC, SQL and Dapper for database connection. In MVC (Model View Controller) request is sent to the Controller which returns a View as an ActionResult response. ####
 
-## Table Name : Products
-## Attributes : ProductId, SKU, ProductName, Features, Price, Stock, warranty, Rating, VendorId
-## Primary Key : SKU
-## Foreign Key : VendorId
+### Table Name : Products
+### Attributes : ProductId, SKU, ProductName, Features, Price, Stock, warranty, Rating, VendorId
+### Primary Key : SKU
+### Foreign Key : VendorId
 
 ### ASP.Net Filters used ###
 * Authorization
