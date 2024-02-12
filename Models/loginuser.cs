@@ -1,9 +1,12 @@
-﻿namespace DemoMVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace DemoMVC.Models
 {
-    public class loginuser
+    public class LoginUser
     {
-        public string username { get; set; }
-        public string passwd { get; set; }
-        public string TableAccessName { get; set; }
+        [Required]
+        public string? username { get; set; }
+        [Required]
+        public string? passwd { get; set; }
+        public string? TableAccessName { get; set; }
     }
 }

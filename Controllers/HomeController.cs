@@ -1,11 +1,9 @@
 using DemoMVC.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Diagnostics;
 using System.Data.SqlClient;
 using Dapper;
-using System.Net.Http;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
@@ -40,19 +38,19 @@ namespace DemoMVC.Controllers
         [HttpGet]
         public IActionResult Login() { return View(); }
         [HttpPost]
-       // [Authorize]
-        public IActionResult Login(IFormCollection f)
+        // [Authorize]
+        public IActionResult Login(LoginUser f)
         {
-            string uname, passwd;
+            string? uname, passwd;
             int flag = 0;
-            uname = f["username"];
-            passwd = f["passwd"];
+            uname = f.username;
+            passwd = f.passwd;
             string connectionString = "Server= 192.168.0.23,1427;Initial Catalog=interns;Integrated Security=False;user id = Interns;password=test;";
             string selectCmd = "Select passwd From loginuser where username = @uname";
             var val = new { uname = uname};
             using (IDbConnection conn = new SqlConnection(connectionString))
             {
-                string result = conn.QueryFirstOrDefault<string>(selectCmd,val);
+                string? result = conn.QueryFirstOrDefault<string>(selectCmd,val);
                 if(result == passwd)
                 {
                     flag = 1;
@@ -62,7 +60,7 @@ namespace DemoMVC.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, f["username"]),
+                    new Claim(ClaimTypes.Name, f.username),
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, 
                     CookieAuthenticationDefaults.AuthenticationScheme);

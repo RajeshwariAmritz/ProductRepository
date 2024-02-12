@@ -4,21 +4,20 @@ namespace DemoMVC.Models
 {
     public class Product
     {
-        [Required]
-        public string ProductId { get; set; }
-        [Required]
-        public string SKU { get; set; }
-        [Required]
-        public string ProductName { get; set; }
-        public string Features { get; set; }
-        [Required]
+        public string? ProductId { get; set; }
+        public string? SKU { get; set; }
+        public string? ProductName { get; set; }
+        public string? Features { get; set; }
+
         public decimal Price { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Stock value can't be empty")]
         public int Stock { get; set; }
+
         public int Warranty { get; set; }
-        public int Rating { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Warranty can't be empty")]
+        public required int Rating { get; set; }
+        [Required(ErrorMessage = "Vendor ID can't be empty")]
         public int VendorId { get; set; }
     }
-
 }

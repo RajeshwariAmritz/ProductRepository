@@ -1,0 +1,23 @@
+﻿@model DemoMVC.Models.Product
+@{
+    ViewData["Title"] = "DeleteProduct";
+}
+
+<h1>DeleteProduct</h1>
+<div class="flex-container">
+    <div class="col-md-4 col-sm-6">
+        <form asp-controller="Product" asp-action="DeleteProduct" method="POST">
+            <br />
+            <div class="form-group">
+                <label> SKU : </label>
+                <input asp-for="SKU" placeholder="SKU" />
+                <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+<h3>@ViewData["Message"]<br/></h3>

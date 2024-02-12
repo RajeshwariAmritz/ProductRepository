@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(
@@ -11,8 +12,10 @@ builder.Services.AddAuthentication(
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddRazorPages();
-
+builder.Services.AddRazorPages().AddMvcOptions(options =>
+{
+    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor( _ => "The field is required.");
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -41,10 +44,4 @@ app.MapRazorPages();
 
 app.Run();
 
-/*app.UseCookieAuthentication(options =>
-{
-    options.AutomaticAuthenticate = true;
-    options.AutomaticChallenge = true;
-    options.LoginPath = "/Home/Login";
-});*/
 

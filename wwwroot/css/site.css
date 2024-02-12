@@ -4,6 +4,26 @@
     min-height: 100%;
     font-family: 'Times New Roman', Times, serif;
 }
+body {
+    margin-bottom: 60px;
+    background-image: linear-gradient( #ffffff, lightblue);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-image: linear-gradient( #ffffff, lightblue);
+}
+
+th {
+    background: #ccc;
+    font-weight: bold;
+}
+
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
 /* styles for desktop devices */
 @media only screen and (min-width: 992px) {
     body {
@@ -12,73 +32,70 @@
         margin: auto;
     }
 }
+
 /* styles for mobile devices */
-@media only screen and (max-width: 767px) {
-    body {
-        font-size: 12px;
-        width: 100%;
-        margin: 0;
-    }
-}
-@media (max-width: 460px) {
-    table {
-        position: relative; /* necessary to keep header visible for scroll */
-    }
-
-    thead, tbody {
-        vertical-align: top;
-    }
-
-    thead, tbody, tr {
-        display: table-cell;
-    }
-
-    thead {
-        width: 100px;
-        border: 1px solid #999;
-    }
-
-    tbody {
-        /* necessary to keep header visible on left for scroll */
-        position: absolute;
-        left: 100px;
-        // based on the width of the 'thead' for offset width: 200px;
-        // how much to show horizontally before scroll border: 1px solid #e7e7e7;
-        overflow-x: scroll;
-    }
-
-    th, td {
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    table, thead, tbody, td, tr {
         display: block;
-        width: 100px;
-        height: 50px;
-        padding: 10px 0;
+        justify-content:normal;
+    }
+    th{
+        display :none;
+    }
+    tr {
+        border: 1px solid #ccc;
+        text-align: left;
+        align-content:end;
+    }
+
+    td {
+        text-align: left;
+        align-content: end;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+     }
+    td:nth-of-type(1):before {
+        content: "Product ID";
+    }
+    td:nth-of-type(2):before {
+        content: "SKU";
+    }
+    td:nth-of-type(3):before {
+        content: "Product Name";
+    }
+    td:nth-of-type(4):before {
+        content: "Features";
+    }
+    td:nth-of-type(5):before {
+         content: "Product Price";
+    }
+    td:nth-of-type(6):before {
+         content: "Stock Availability";
+    }
+    td:nth-of-type(7):before {
+        content: "Warranty";
+    }
+    td:nth-of-type(8):before {
+        content: "Rating";
+    }
+    td:nth-of-type(9):before {
+        content: "Vendor ID";
     }
 }
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-        font-family: 'Times New Roman', Times, serif;
-    }
-}
-body {
-    margin-bottom: 60px;
-    background-image: linear-gradient( #ffffff, lightblue);
-}
-table {
-    width: 50%;
-    box-shadow: 5px 5px 5px 5px gray;
-}
-th, td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-}
-th{
-    font-size:larger;
-    font-style:bold;
-}
-td{
-    text-align:left
-}
+
+
 input[type=text] {
     padding: 10px;
     border: 0;
@@ -91,9 +108,6 @@ input[type=password] {
     box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
     border-radius: 10px;
 }
-body {
-    margin: 20px;
-}
 label {
     display: inline-block;
     width: 140px;
@@ -101,11 +115,34 @@ label {
 }
 .flex-container {
     display: flex;
-    /*this centers the text horizontally*/
-    justify-content: center;
-    /*this centers the text vertically*/
-    align-items: center;
     box-shadow: 5px 5px 3px 3px lightblue;
+    align-content:center;
+    text-align:center;
+    align-items:center;
     height:1000%;
     width: 120%;
-}​
+}
+​
+
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}

@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    ViewData["Title"] = "View Product";
+    ViewData["Title"] = "Read a Product detail";
 }@*
 @using (Html.BeginForm("ReadProduct", "Product", FormMethod.Post))
 {
@@ -34,6 +34,8 @@
             </div>
         </form>
     </div>
+    <br/>
+    <br/>
     <h6>
         @ViewBag.ProductId <br/>
         @ViewBag.SKU <br />

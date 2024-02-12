@@ -2,13 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data;
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.OutputCaching;
 namespace DemoMVC.Controllers
 {
-    
     public class ProductController : Controller
     {
         public string connectionString = "Server=192.168.0.23,1427;Initial Catalog=interns;Integrated Security=False;user id=Interns;password=test;";
@@ -22,16 +20,14 @@ namespace DemoMVC.Controllers
         [Authorize]
         public IActionResult ReadProduct()
         {
-            Product p = new(); 
-            return View(p);
+            return View();
         }
         [HttpPost]
         [Route("read")]
         [Authorize]
-        public IActionResult ReadProduct(Product product)
+        public IActionResult ReadProduct(Product obj)
         {
-            string sku = product.SKU;            
-            Product obj;
+            string? sku = obj.SKU;   
             string selectCmd = "Select * from Products Where SKU = @input";
             
             using (IDbConnection sql = new SqlConnection(connectionString))
@@ -102,7 +98,7 @@ namespace DemoMVC.Controllers
         [Authorize]
         public IActionResult Create(Product product)
         {
-            string ProductId, SKU, ProductName, Features;
+            string? ProductId, SKU, ProductName, Features;
             decimal Price;
             int VendorId, Rating, Stock, Warranty;
             ProductId = product.ProductId;
@@ -136,18 +132,44 @@ namespace DemoMVC.Controllers
         [Route("update")]
         public IActionResult UpdateStock(Product f)
         {
-            int stock = Convert.ToInt32(f.Stock);
-            string SKU = f.SKU;
-            string updateCmd = "Update Products Set Stock =@Stock Where SKU = @SKU";
-            var val = new {Stock =  stock,SKU = SKU};
-            using(IDbConnection connection = new SqlConnection(connectionString))
+            if (ModelState.IsValid)
             {
-                connection.Execute(updateCmd, val);
+                int stock = Convert.ToInt32(f.Stock);
+                string? SKU = f.SKU;
+                string updateCmd = "Update Products Set Stock =@Stock Where SKU = @SKU";
+                var val = new { Stock = stock, SKU = SKU };
+                using (IDbConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Execute(updateCmd, val);
+                }
+                Console.WriteLine("Updation completed");
+                ViewData["Message"] = "Stock details updated successfully";
+                return View();
             }
-            Console.WriteLine("Updation completed");
-            ViewData["Message"] = "Stock details updated successfully";
+            else
+            {
+                return View();
+            }
+            
+        }
+        [Route("delete")]
+        [HttpGet]
+        public IActionResult DeleteProduct() { return View(); }
+        [HttpPost]
+        [Route("delete")]
+        public IActionResult DeleteProduct(Product product)
+        {
+            string? SKU = product.SKU;
+            var val = new {  SKU = SKU };
+            string deleteCmd = "Delete from Products Where SKU = @SKU";
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(deleteCmd, val);
+            }
+            Console.WriteLine("Deletion completed");
+            ViewData["Message"] = "Product details deleted successfully";
             return View();
-        }        
+        }
     }
 }
 

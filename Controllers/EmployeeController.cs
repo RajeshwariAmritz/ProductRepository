@@ -15,7 +15,7 @@ namespace DemoMVC.Controllers
         [HttpPost]
         public IActionResult AddEmployee(Employee f)
         {
-            string  Name, DeptName,Gender;
+            string?  Name, DeptName,Gender;
             decimal Salary;
             bool isActive;
             DateTime dob;
