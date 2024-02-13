@@ -1,47 +1,58 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddAuthentication(
-    CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(option =>
+internal class Program
+{
+    private static void Main(string[] args)
     {
-        option.LoginPath = "/Home/Login";
-        option.ExpireTimeSpan = TimeSpan.FromMinutes(2);
-    });
+        var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddAuthentication(
+            CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(option =>
+            {
+                option.LoginPath = "/Home/Login";
+                option.ExpireTimeSpan = TimeSpan.FromMinutes(2);
+            });
 
-builder.Services.AddAuthorization();
+        builder.Services.AddAuthorization();
 
-builder.Services.AddRazorPages().AddMvcOptions(options =>
-{
-    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor( _ => "The field is required.");
-});
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+        builder.Services.AddRazorPages().AddMvcOptions(options =>
+        {
+            options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor( _ => "The field is required.");
+        });
+        // Add services to the container.
+        builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+        //Add support to logging with SERILOG
+        builder.Host.UseSerilog((context, configuration) =>
+            configuration.ReadFrom.Configuration(context.Configuration));
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+
+        //Add support to logging request with SERILOG
+        app.UseSerilogRequestLogging();
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Login}/{id?}");
+
+        app.MapRazorPages();
+
+        app.Run();
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Login}/{id?}");
-
-app.MapRazorPages();
-
-app.Run();
-
-
