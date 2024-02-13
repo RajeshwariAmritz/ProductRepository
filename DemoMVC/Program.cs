@@ -1,11 +1,19 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
-
-internal class Program
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using DemoMVC;
+internal partial class Program
 {
+    
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        /*var builder1 = WebApplication.CreateBuilder(args);
+        builder1.Services.AddLog4net();
+        var log4net = builder.Build();
+        log4net.Run();*/
         builder.Services.AddAuthentication(
             CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(option =>
@@ -40,6 +48,7 @@ internal class Program
         //Add support to logging request with SERILOG
         app.UseSerilogRequestLogging();
 
+        
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 

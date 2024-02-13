@@ -38,7 +38,7 @@ namespace DemoMVC.Controllers
                 ViewBag.SKU = "SKU : " + obj.SKU;
                 ViewBag.ProductName = "Product Name : " + obj.ProductName;
                 ViewBag.Features = "Features : " + obj.Features;
-                return View();
+                return RedirectToAction("DispDetails",obj);
             }
 
         }
@@ -130,7 +130,7 @@ namespace DemoMVC.Controllers
         [HttpPost]
         [Authorize]
         [Route("update")]
-        public IActionResult UpdateStock(Product f)
+        public IActionResult UpdateStock(UpdateProduct f)
         {
             if (ModelState.IsValid)
             {
@@ -157,7 +157,7 @@ namespace DemoMVC.Controllers
         public IActionResult DeleteProduct() { return View(); }
         [HttpPost]
         [Route("delete")]
-        public IActionResult DeleteProduct(Product product)
+        public IActionResult DeleteProduct(DeleteProduct product)
         {
             string? SKU = product.SKU;
             var val = new {  SKU = SKU };

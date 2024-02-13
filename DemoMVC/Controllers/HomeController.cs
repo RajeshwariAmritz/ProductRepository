@@ -17,6 +17,10 @@ namespace DemoMVC.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            /*_logger.LogDebug("Hey, this is a DEBUG message.");
+            _logger.LogInformation("Hey, this is an INFO message.");
+            _logger.LogWarning("Hey, this is a WARNING message.");
+            _logger.LogError("Hey, this is an ERROR message.");*/
         }
         public void OnGet()
         {

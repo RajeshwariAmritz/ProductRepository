@@ -4,6 +4,9 @@
     min-height: 100%;
     font-family: 'Times New Roman', Times, serif;
 }
+nav {
+    box-shadow: 0 0 3px 3px lightblue;
+}
 body {
     margin-bottom: 60px;
     background-image: linear-gradient( #ffffff, lightblue);
@@ -114,16 +117,13 @@ label {
     text-align: left;
 }
 .flex-container {
-    display: flex;
-    box-shadow: 5px 5px 3px 3px lightblue;
-    align-content:center;
+    box-shadow: 3px 3px 3px 3px lightblue;
+    backdrop-filter:blur(50px);
     text-align:center;
+    align-content:center;
     align-items:center;
-    height:1000%;
-    width: 120%;
+    
 }
-​
-
 .field-validation-error {
     color: #e80c4d;
     font-weight: bold;
