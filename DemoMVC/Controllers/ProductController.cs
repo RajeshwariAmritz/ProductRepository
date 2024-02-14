@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.Build.Evaluation;
 namespace DemoMVC.Controllers
 {
     public class ProductController : Controller
@@ -27,20 +28,36 @@ namespace DemoMVC.Controllers
         [Authorize]
         public IActionResult ReadProduct(Product obj)
         {
-            string? sku = obj.SKU;   
-            string selectCmd = "Select * from Products Where SKU = @input";
+            //string? sku ;   
             
-            using (IDbConnection sql = new SqlConnection(connectionString))
+            return RedirectToAction("DispDetails", new { sku = obj.SKU });
+            /*using (IDbConnection sql = new SqlConnection(connectionString))
             {
                 obj = sql.QueryFirstOrDefault<Product>(selectCmd, new { input = sku });
-                Console.WriteLine(obj.ProductId);
                 ViewBag.ProductId = "Product ID : "+obj.ProductId;
                 ViewBag.SKU = "SKU : " + obj.SKU;
                 ViewBag.ProductName = "Product Name : " + obj.ProductName;
                 ViewBag.Features = "Features : " + obj.Features;
-                return RedirectToAction("DispDetails",obj);
-            }
+                
+            }*/
+        }
 
+        /*[HttpGet]
+        [Route("Display")]
+        [Authorize]
+        public IActionResult DispDetails() { return View(); }
+        [HttpPost]*/
+        [Route("Display")]
+        [Authorize]
+        public IActionResult DispDetails(string sku)
+        {
+            string selectCmd = "Select * from Products Where SKU = @input";
+            Product? obj;
+            using (IDbConnection sql = new SqlConnection(connectionString))
+            {
+                obj = sql.QueryFirstOrDefault<Product>(selectCmd, new { input = sku });
+                return View(obj);
+            }
         }
         /*[Route("read")]
         [Authorize]
@@ -172,4 +189,3 @@ namespace DemoMVC.Controllers
         }
     }
 }
-

@@ -146,3 +146,49 @@ input.input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/*body {
+    background: #288dfa;
+    position: relative;
+    height: 100vh;
+}*/
+
+.form--user__icon span {
+    font-size: 32px;
+    position: absolute;
+    top: 50% ;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ccontainer {
+    width: 30%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    color: #000;
+    content: '';
+    padding: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+    box-shadow: 0 0 5px 3px lightblue;
+}
+
+
+.form--user__icon {
+    border-radius: 50%;
+    height: 100px;
+    z-index: 9;
+    top: -50px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    background: #ea7a1a;
+    width: 100px;
+    color: #fff;
+}

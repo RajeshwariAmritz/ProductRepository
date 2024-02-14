@@ -35,8 +35,18 @@ internal partial class Program
         builder.Host.UseSerilog((context, configuration) =>
             configuration.ReadFrom.Configuration(context.Configuration));
 
+        builder.Services.AddHttpLogging(logging =>
+        {
+            logging.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+            logging.RequestHeaders.Add("REsponseHeader");
+
+        }
+        );
+
         var app = builder.Build();
 
+        app.UseMiddleware<Middleware>();
+        
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -47,8 +57,8 @@ internal partial class Program
 
         //Add support to logging request with SERILOG
         app.UseSerilogRequestLogging();
+        app.UseHttpLogging();
 
-        
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
@@ -62,6 +72,10 @@ internal partial class Program
 
         app.MapRazorPages();
 
+        /*app.Run(async (context) =>
+        {
+            await context.Response.WriteAsync("Hello World!");
+        });*/
         app.Run();
     }
 }
