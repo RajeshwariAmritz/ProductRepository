@@ -14,13 +14,21 @@ namespace DemoMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProductRepository _productRepository;
+        
+        public HomeController(ILogger<HomeController> logger, IProductRepository productRepository)
         {
             _logger = logger;
+            _productRepository = productRepository;
             /*_logger.LogDebug("Hey, this is a DEBUG message.");
             _logger.LogInformation("Hey, this is an INFO message.");
             _logger.LogWarning("Hey, this is a WARNING message.");
             _logger.LogError("Hey, this is an ERROR message.");*/
+        }
+        public IActionResult Index()
+        {
+            var prolist = _productRepository.GetProduct();
+            return View(prolist);
         }
         public void OnGet()
         {
@@ -34,10 +42,10 @@ namespace DemoMVC.Controllers
                 throw;
             }
         }
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
 
         public IActionResult Privacy()
         {

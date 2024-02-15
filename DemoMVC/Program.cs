@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using DemoMVC;
+using DemoMVC.Models;
 internal partial class Program
 {
     
@@ -42,7 +43,7 @@ internal partial class Program
 
         }
         );
-
+        builder.Services.AddSingleton<IProductRepository, UpdateProduct>();
         var app = builder.Build();
 
         app.UseMiddleware<Middleware>();

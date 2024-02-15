@@ -10,7 +10,7 @@ namespace DemoMVC.Models
 
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage ="Stock value can't be empty")]
+        [Required(ErrorMessage = "Stock value can't be empty")]
         public int Stock { get; set; }
 
         public int Warranty { get; set; }
@@ -18,5 +18,6 @@ namespace DemoMVC.Models
         public required int Rating { get; set; }
         [Required(ErrorMessage = "Vendor ID can't be empty")]
         public int VendorId { get; set; }
+
     }
 }
