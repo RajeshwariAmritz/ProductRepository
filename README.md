@@ -31,31 +31,31 @@ Operations Performed:
 
 1.Login page
 <br/>
-<img src="Pictures\login.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\Login.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
 2.Display Products table
 <br/>
-<img src="Pictures\view.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\view.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
 3.Insert a new record into the table
 <br/>
-<img src="Pictures\insert.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\insert.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
 4.Read a single value from the table
 <br/>
-<img src="Pictures\read.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\read.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
 5.Update data
 <br/>
-<img src="Pictures\update.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\update.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
 6.Delete Product detail
 <br/>
-<img src="Pictures\delete.PNG" style=" width:500px ; height:700px ">
+<img src="Camera Roll\delete.PNG" style=" width:500px ; height:700px ">
 <br/>
 <br/>
