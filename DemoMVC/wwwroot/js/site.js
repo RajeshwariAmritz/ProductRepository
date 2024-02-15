@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 
-window.setMobileTable = function (selector) {
+/*window.setMobileTable = function (selector) {
     // if (window.innerWidth > 600) return false;
     const tableEl = document.querySelector(selector);
     const thEls = tableEl.querySelectorAll('thead th');
@@ -13,4 +13,12 @@ window.setMobileTable = function (selector) {
             (td, ndx) => td.setAttribute('label', tdLabels[ndx])
         );
     });
-}
+}*/
+<script>
+    function confirm() {
+        {/*var canProceed = confirm('Do you want to Delete ?');
+    if(canProceed)
+    location.href = url;
+    return canProceed;*/}
+    }
+</script>
