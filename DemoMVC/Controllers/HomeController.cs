@@ -7,6 +7,7 @@ using Dapper;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using System.Net;
 //using System.Web.Security;
 namespace DemoMVC.Controllers
 {
@@ -106,10 +107,10 @@ namespace DemoMVC.Controllers
         [HttpGet]
         public IActionResult Logout() { return View(); }
         [HttpPost]
-        public IActionResult Logout(IFormCollection f)
+        public IActionResult Logout(Product f)
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Index", "Product");
         }
     }
 }

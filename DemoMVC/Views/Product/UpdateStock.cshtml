@@ -2,21 +2,18 @@
 @{
     ViewData["Title"] = "Update Stock of a Product";
 }
-<script>
-    function requestConfirmation(){
-        swal("Are You want To Update", {
-            buttons: {
-                cancel:true,
-                New: {
-                    text:"Update",
-                    value:"Update",
-                    visible:true,
-                    timer:10000,
-                },
-            },
-        })
-    }
-</script>
+@section Scripts{
+   <script>
+        document.getElementById('update').addEventListener("click", function () {
+            Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            );
+        });
+   </script>       
+}
+    
 <h1>Update Stock Details</h1>
 <hr />
 <div class="flex-container ">
@@ -24,7 +21,7 @@
         @ViewData["Message"]
     </h4>
     <div class="col-md-4 col-sm-6">
-        <form asp-controller="Product" asp-action="UpdateStock">
+        <form asp-controller="Product" asp-action="UpdateStock"> @* onsubmit="requestConfirmation(event)" *@
             <div class="form-group">
                 <br />
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -46,7 +43,7 @@
             <br/>
             <div class="form-group">
                 <br />
-                <button type="submit" class="btn btn-secondary" onclick="return requestConfirmation()">Update</button>
+                <button type="submit" id="update" class="btn btn-secondary" >Update</button>
             </div>
         </form>
     </div>

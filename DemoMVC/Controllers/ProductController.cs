@@ -25,11 +25,8 @@ namespace DemoMVC.Controllers
         }
         [HttpPost]
         [Route("read")]
-        [Authorize]
         public IActionResult ReadProduct(Product obj)
         {
-            //string? sku ;   
-            
             return RedirectToAction("DispDetails", new { sku = obj.SKU });
             /*using (IDbConnection sql = new SqlConnection(connectionString))
             {
@@ -112,7 +109,6 @@ namespace DemoMVC.Controllers
         }
         [HttpPost]
         [Route("insert")]
-        [Authorize]
         public IActionResult Create(Product product)
         {
             string? ProductId, SKU, ProductName, Features;
@@ -145,7 +141,6 @@ namespace DemoMVC.Controllers
             return View();
         }
         [HttpPost]
-        [Authorize]
         [Route("update")]
         public IActionResult UpdateStock(UpdateProduct f)
         {
@@ -171,6 +166,7 @@ namespace DemoMVC.Controllers
         }
         [Route("delete")]
         [HttpGet]
+        [Authorize]
         public IActionResult DeleteProduct() { return View(); }
         [HttpPost]
         [Route("delete")]

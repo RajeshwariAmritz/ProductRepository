@@ -14,29 +14,22 @@
         );
     });
 }*/
-<script >
-    function reqconfirm() {
-        {
-            Swal.fire({
-                title: "Do you want to save the changes?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Save",
-                denyButtonText: `Don't save`
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    Swal.fire("Saved!", "", "success");
-                } else if (result.isDenied) {
-                    Swal.fire("Changes are not saved", "", "info");
-                }
-            });
+
+
+document.getElementById('update').addEventListener("click", function () {
+    Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+    );
+});
+function requestConfirmation(e) {
+    //e.preventDefault();
+    Swal.fire("Pop up");
 }
-    }
     {/*function requestConfirmation(){
         swal("Are You want To Update", {
             dangerMode: true,
             buttons: true,
         })
     }*/}
-</script>
