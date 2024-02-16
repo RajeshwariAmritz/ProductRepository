@@ -16,20 +16,4 @@
 }*/
 
 
-document.getElementById('update').addEventListener("click", function () {
-    Swal.fire(
-        'Good job!',
-        'You clicked the button!',
-        'success'
-    );
-});
-function requestConfirmation(e) {
-    //e.preventDefault();
-    Swal.fire("Pop up");
-}
-    {/*function requestConfirmation(){
-        swal("Are You want To Update", {
-            dangerMode: true,
-            buttons: true,
-        })
-    }*/}
+

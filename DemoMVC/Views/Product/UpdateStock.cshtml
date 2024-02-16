@@ -2,16 +2,30 @@
 @{
     ViewData["Title"] = "Update Stock of a Product";
 }
-@section Scripts{
-   <script>
-        document.getElementById('update').addEventListener("click", function () {
-            Swal.fire(
-                'Good job!',
-                'You clicked the button!',
-                'success'
-            );
-        });
-   </script>       
+@section Scripts
+{
+    <script>
+        function requestConfirmation(event) {
+            event.preventDefault();
+            swal.fire({
+                title: "Are you sure you want to update?",
+                icon: "question",
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: "Save",
+                denyButtonText: "Don't save"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const updateForm = document.getElementById('updateForm');
+                    updateForm.submit();
+                    Swal.fire("Saved!", "Saved with the new changes!", "success");
+                }
+                else if (result.isDenied) {
+                    swal.fire("Cancelled!","Update operation not performed","info");
+                }
+            });
+        }
+    </script>
 }
     
 <h1>Update Stock Details</h1>
@@ -21,7 +35,7 @@
         @ViewData["Message"]
     </h4>
     <div class="col-md-4 col-sm-6">
-        <form asp-controller="Product" asp-action="UpdateStock"> @* onsubmit="requestConfirmation(event)" *@
+        <form asp-controller="Product" id="updateForm" asp-action="UpdateStock" onsubmit="requestConfirmation(event)" >
             <div class="form-group">
                 <br />
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -43,7 +57,7 @@
             <br/>
             <div class="form-group">
                 <br />
-                <button type="submit" id="update" class="btn btn-secondary" >Update</button>
+                <button type="submit" class="btn btn-secondary">Update</button>
             </div>
         </form>
     </div>

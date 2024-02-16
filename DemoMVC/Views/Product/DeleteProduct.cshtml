@@ -2,11 +2,55 @@
 @{
     ViewData["Title"] = "DeleteProduct";
 }
+@section Scripts
+{
+    <script>
+        function requestConfirmation(event) {
+            event.preventDefault();
 
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteForm = document.getElementById('deleteForm');
+                    deleteForm.submit();
+                    swalWithBootstrapButtons.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelled",
+                        text: "Your imaginary file is safe :)",
+                        icon: "error"
+                    });
+                }
+            });
+           
+        }
+    </script>
+}
 <h1>DeleteProduct</h1>
 <div class="flex-container">
     <div class="col-md-4 col-sm-6">
-        <form asp-controller="Product" asp-action="DeleteProduct" method="POST">
+        <form asp-controller="Product" asp-action="DeleteProduct" id="deleteForm" onsubmit="requestConfirmation(event)" method=" POST">
             <div class="form-group">
                 <br />
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -18,7 +62,7 @@
             </div>
             <br />
             <div class="form-group">
-                <button type="submit" class="btn btn-secondary" onclick="return confirm('Do you want to Delete ?')">Delete</button>
+                <button type="submit" class="btn btn-secondary" >Delete</button>
             </div>
             <br />
         </form>
