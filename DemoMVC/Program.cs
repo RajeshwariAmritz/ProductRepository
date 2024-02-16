@@ -15,6 +15,8 @@ internal partial class Program
         builder1.Services.AddLog4net();
         var log4net = builder.Build();
         log4net.Run();*/
+        
+        // Moves to Login Page when the Web page is inactive for more than 2 minutes
         builder.Services.AddAuthentication(
             CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(option =>
@@ -25,10 +27,12 @@ internal partial class Program
 
         builder.Services.AddAuthorization();
 
+        //To display the message "The field is required." instead of a builtin required statement
         builder.Services.AddRazorPages().AddMvcOptions(options =>
         {
             options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor( _ => "The field is required.");
         });
+
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
@@ -40,10 +44,11 @@ internal partial class Program
         {
             logging.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
             logging.RequestHeaders.Add("REsponseHeader");
+        });
 
-        }
-        );
+        //Dependency Injection
         builder.Services.AddSingleton<IProductRepository, UpdateProduct>();
+
         var app = builder.Build();
 
         app.UseMiddleware<Middleware>();
