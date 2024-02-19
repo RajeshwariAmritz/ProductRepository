@@ -63,6 +63,7 @@ namespace DemoMVC.Controllers
         public IActionResult Login() { return View(); }
         [HttpPost]
         // [Authorize]
+       // [ValidateAntiForgeryToken]
         public IActionResult Login(LoginUser f)
         {
             string? uname, passwd;
