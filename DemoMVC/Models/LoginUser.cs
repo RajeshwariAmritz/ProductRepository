@@ -3,9 +3,11 @@ namespace DemoMVC.Models
 {
     public class LoginUser
     {
-        [Required]
+        [Required(ErrorMessage="Username Required")]
+        [StringLength(20)]
         public string? username { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Password Required")]
+        [StringLength(20)]
         public string? passwd { get; set; }
         public string? TableAccessName { get; set; }
     }

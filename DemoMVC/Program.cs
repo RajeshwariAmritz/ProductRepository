@@ -49,6 +49,15 @@ internal partial class Program
         //Dependency Injection
         builder.Services.AddSingleton<IProductRepository, UpdateProduct>();
 
+
+        builder.Services.AddAntiforgery(options => options.HeaderName = "XSRF-TOKEN");
+
+        builder.Services.AddWebOptimizer(pipeline =>
+        {
+            pipeline.MinifyJsFiles("js/**.js");
+            pipeline.AddJavaScriptBundle("/js/bundle.js", "js/**/*.js");
+        });
+
         var app = builder.Build();
 
         app.UseMiddleware<Middleware>();
@@ -60,6 +69,8 @@ internal partial class Program
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
+
+        app.UseWebOptimizer();
 
         //Add support to logging request with SERILOG
         app.UseSerilogRequestLogging();

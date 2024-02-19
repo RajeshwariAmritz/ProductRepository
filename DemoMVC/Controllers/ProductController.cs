@@ -12,11 +12,13 @@ namespace DemoMVC.Controllers
     {
         public string connectionString = "Server=192.168.0.23,1427;Initial Catalog=interns;Integrated Security=False;user id=Interns;password=test;";
         [Authorize]
+        
         public IActionResult Index()
         {
             return View();
         }
         [HttpGet]
+       // [ValidateAntiForgeryToken]
         [Route("read")]
         [Authorize]
         public IActionResult ReadProduct()
@@ -24,6 +26,7 @@ namespace DemoMVC.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [Route("read")]
         public IActionResult ReadProduct(Product obj)
         {
@@ -46,6 +49,7 @@ namespace DemoMVC.Controllers
         [HttpPost]*/
         [Route("Display")]
         [Authorize]
+       // [ValidateAntiForgeryToken]
         public IActionResult DispDetails(string sku)
         {
             string selectCmd = "Select * from Products Where SKU = @input";
@@ -90,6 +94,7 @@ namespace DemoMVC.Controllers
         [OutputCache(Duration = 60)]
         [Route("view")]
         [Authorize]
+       // [ValidateAntiForgeryToken]
         public IActionResult ViewProduct()
         {
             string selectCmd = "Select * from Products";
@@ -102,6 +107,7 @@ namespace DemoMVC.Controllers
         }
         [Route("insert")]
         [HttpGet]
+       // [ValidateAntiForgeryToken]
         [Authorize]
         public IActionResult Create()
         {
@@ -109,6 +115,7 @@ namespace DemoMVC.Controllers
         }
         [HttpPost]
         [Route("insert")]
+       // [ValidateAntiForgeryToken]
         public IActionResult Create(Product product)
         {
             string? ProductId, SKU, ProductName, Features;
@@ -135,6 +142,7 @@ namespace DemoMVC.Controllers
         }
         [Route("update")]
         [HttpGet]
+      //  [ValidateAntiForgeryToken]
         [Authorize]
         public IActionResult UpdateStock()
         {
@@ -142,6 +150,7 @@ namespace DemoMVC.Controllers
         }
         [HttpPost]
         [Route("update")]
+       // [ValidateAntiForgeryToken]
         public IActionResult UpdateStock(UpdateProduct f)
         {
             if (ModelState.IsValid)
@@ -167,9 +176,11 @@ namespace DemoMVC.Controllers
         [Route("delete")]
         [HttpGet]
         [Authorize]
+       // [ValidateAntiForgeryToken]
         public IActionResult DeleteProduct() { return View(); }
         [HttpPost]
         [Route("delete")]
+       // [ValidateAntiForgeryToken]
         public IActionResult DeleteProduct(DeleteProduct product)
         {
             string? SKU = product.SKU;
